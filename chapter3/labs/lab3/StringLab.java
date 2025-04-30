@@ -16,7 +16,8 @@ public class StringLab {
         
         // TODO: 입력받은 문장에서 단어 수를 계산하여 출력하세요.
         // 힌트: split() 메소드를 사용하여 문자열을 공백으로 분리하세요.
-        
+        String[] arr1 = sentence.split(" ");
+        System.out.println(arr1.length);
         
         // 2. 문자열 뒤집기
         System.out.println("\n===== 문자열 뒤집기 =====");
@@ -25,7 +26,8 @@ public class StringLab {
         
         // TODO: 입력받은 문자열을 뒤집어서 출력하세요.
         // 힌트: 문자 배열로 변환하거나, StringBuilder의 reverse() 메소드를 활용하세요.
-        
+        StringBuilder sb = new StringBuilder(original);
+        System.out.println(sb.reverse());
         
         // 3. 특정 문자 등장 횟수 계산하기
         System.out.println("\n===== 특정 문자 등장 횟수 계산하기 =====");
@@ -36,7 +38,13 @@ public class StringLab {
         
         // TODO: 입력받은 문자열에서 특정 문자의 등장 횟수를 계산하여 출력하세요.
         // 힌트: 문자열을 순회하면서 각 문자와 대상 문자를 비교하세요.
-        
+        int cnt = 0;
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == target) {
+                cnt++;
+            }
+        }
+        System.out.println(cnt);
         
         // 4. 회문(Palindrome) 검사
         System.out.println("\n===== 회문(Palindrome) 검사 =====");
@@ -47,7 +55,13 @@ public class StringLab {
         // TODO: 입력받은 문자열이 회문인지 검사하여 결과를 출력하세요.
         // 회문은 앞으로 읽으나 뒤로 읽으나 같은 단어나 문장을 의미합니다 (예: "level", "civic").
         // 힌트: 문자열을 뒤집은 후 원래 문자열과 비교하세요.
-
+        sb = new StringBuilder(palindrome);
+        String reverse_palindrome =  sb.reverse().toString();
+        if (palindrome.equals(reverse_palindrome)) {
+            System.out.println("입력한 문자열은 회문입니다.");
+        } else {
+            System.out.println("입력한 문자열은 회문이 아닙니다.");
+        }
         
         scanner.close();
     }
