@@ -8,14 +8,26 @@ package chapter5.labs.lab1;
  */
 public class Rectangle extends Shape {
     // TODO: 사각형의 속성 정의 (예: 너비, 높이)
-    
+    private final int width;
+    private final int height;
     
     // TODO: 생성자 정의
-    
+    public Rectangle(int width, int height) {
+        super("사각형", "파랑");
+        this.width = width;
+        this.height = height;
+    }
     
     // TODO: 부모 클래스의 메소드를 오버라이딩하여 사각형의 면적을 계산하는 메소드 구현
-    
-    
+    @Override
+    public double getArea() {
+        return width * height;
+    }
+
     // TODO: 부모 클래스의 메소드를 오버라이딩하여 사각형 정보를 출력하는 메소드 구현
-    
+    @Override
+    public void shapeInfo() {
+        super.shapeInfo();
+        System.out.println("가로: " + width + ", 세로: " + height);
+    }
 }

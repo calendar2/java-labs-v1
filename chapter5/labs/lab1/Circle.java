@@ -8,14 +8,24 @@ package chapter5.labs.lab1;
  */
 public class Circle extends Shape {
     // TODO: 원의 속성 정의 (예: 반지름)
-    
+    private final double radius;
     
     // TODO: 생성자 정의
-    
+    public Circle(double radius) {
+        super("원", "검정");
+        this.radius = radius;
+    }
     
     // TODO: 부모 클래스의 메소드를 오버라이딩하여 원의 면적을 계산하는 메소드 구현
-    
-    
+    @Override
+    public double getArea() {
+        return radius * radius * Math.PI;
+    }
+
     // TODO: 부모 클래스의 메소드를 오버라이딩하여 원 정보를 출력하는 메소드 구현
-    
-} 
+    @Override
+    public void shapeInfo() {
+        super.shapeInfo();
+        System.out.println("반지름: " + radius);
+    }
+}

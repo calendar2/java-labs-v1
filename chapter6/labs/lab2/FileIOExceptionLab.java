@@ -1,8 +1,7 @@
 package chapter6.labs.lab2;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 /**
@@ -18,7 +17,7 @@ public class FileIOExceptionLab {
         Scanner scanner = new Scanner(System.in);
         
         // TODO: 사용자로부터 읽을 파일 이름을 입력받으세요.
-        
+        String fileName = scanner.nextLine();
         
         // TODO: try-with-resources 구문을 사용하여 파일을 읽고 내용을 분석하세요.
         // 1. BufferedReader를 사용하여 파일을 한 줄씩 읽습니다.
@@ -31,7 +30,22 @@ public class FileIOExceptionLab {
         
         
         // 참고: 단어 수 계산을 위해 String.split("\\s+") 메소드를 활용할 수 있습니다.
-        
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8))) {
+            String line;
+            int count = 0;
+            while ((line = br.readLine()) != null) {
+                count++;
+                int word_count = line.split(" ").length;
+                int line_count = line.length();
+                System.out.println(count + "줄, 단어 수: " + word_count + ", 문자 수: " + line_count);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("입력하신 이름의 파일이 없습니다.");
+        } catch (IOException e) {
+            System.out.println("파일 읽기 중 오류가 발생했습니다.");
+        } catch (Exception e) {
+            System.out.println("예상하지 못한 예외가 발생했습니다.");
+        }
         
         scanner.close();
         System.out.println("프로그램을 종료합니다.");

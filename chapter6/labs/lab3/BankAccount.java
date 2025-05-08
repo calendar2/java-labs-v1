@@ -53,8 +53,12 @@ public class BankAccount {
      */
     public void deposit(double amount) throws IllegalArgumentException {
         // TODO: 입금액이 0 이하인 경우 IllegalArgumentException을 발생시키세요.
+        if (amount <= 0) {
+            throw new IllegalArgumentException("입금액은 0원 보다 작거나 같을 수 없습니다.");
+        }
+
         // TODO: 유효한 입금액인 경우 잔액을 증가시키세요.
-        
+        balance += amount;
     }
     
     /**
@@ -65,9 +69,17 @@ public class BankAccount {
      */
     public void withdraw(double amount) throws IllegalArgumentException, InsufficientBalanceException {
         // TODO: 출금액이 0 이하인 경우 IllegalArgumentException을 발생시키세요.
+        if (amount <= 0) {
+            throw new IllegalArgumentException("출금액은 0원 보다 작거나 같을 수 없습니다.");
+        }
+
         // TODO: 출금액이 잔액보다 큰 경우 InsufficientBalanceException을 발생시키세요.
+        if (amount > balance) {
+            throw new InsufficientBalanceException("잔액이 부족합니다.", amount, balance);
+        }
+
         // TODO: 유효한 출금액인 경우 잔액을 감소시키세요.
-        
+        balance -= amount;
     }
     
     /**
